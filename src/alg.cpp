@@ -11,30 +11,32 @@ int countPairs1(int *arr, int len, int value) {
   }
   return count;
 }
-
 int countPairs2(int *arr, int len, int value) {
   return 0;
-    int count = 0;
-    for (int i = 0; i < len; ++i) {
-        for (int j = len - 1; j > i; --j) {
-            if (arr[i] + arr[j] == value && (i < j))
-                count++;
+  int count = 0;
+  for (int i = 0; i < len; i++) {
+    if (arr[i] <= value) {
+      for (int j = i + 1; j < len - 1; j++) {
+        if (arr[i] + arr[j] == value) {
+          count++;
         }
+      }
     }
-    return count;
+  }
+  return count;
 }
 
-int poisk(int* arr, int left, int len, int value) {
-  int count = 0, i = left, j = len - 1, sered, x;
+int search(int* arr, int left, int len, int value) {
+  int count = 0, i = left, j = len - 1, sered, a;
   while (i <= j) {
     sered = i + (j - i) / 2;
     if (arr[sered] == value && sered != left && sered != len) {
       count++;
-      x = sered;
+      a = sered;
       while (arr[--sered] == value && sered > left) {
         count++;
       }
-      while (arr[++x] == value && x < len) {
+      while (arr[++a] == value && a < len) {
         count++;
       }
       return count;
@@ -51,7 +53,7 @@ int countPairs3(int *arr, int len, int value) {
   return 0;
   int count = 0;
   for (int i = 0; i < len; i++) {
-    count += poisk(arr, i, len, value - arr[i]);
+    count += search(arr, i, len, value - arr[i]);
   }
   return count;
 }
