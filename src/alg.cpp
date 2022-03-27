@@ -27,7 +27,7 @@ int countPairs2(int *arr, int len, int value) {
 int poisk(int* arr, int left, int len, int value) {
   int count = 0, i = left, j = len - 1, sered, x;
   while (i <= j) {
-    mid = i + (j - i) / 2;
+    sered = i + (j - i) / 2;
     if (arr[sered] == value && sered != left && sered != len) {
       count++;
       x = sered;
