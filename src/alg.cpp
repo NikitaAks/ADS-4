@@ -26,17 +26,17 @@ int countPairs2(int *arr, int len, int value) {
   return count;
 }
 
-int search(int* arr, int left, int len, int value) {
+int cbinsearch(int* arr, int left, int len, int value) {
   int count = 0, i = left, j = len - 1, sered, a;
   while (i <= j) {
     sered = i + (j - i) / 2;
-    if (arr[sered] == value && sered != left && sered != len) {
+    if (arr[mid] == value && sered != left && sered != len) {
       count++;
       a = sered;
       while (arr[--sered] == value && sered > left) {
         count++;
       }
-      while (arr[++a] == value && a < len) {
+      while (arr[++a] == value && x < len) {
         count++;
       }
       return count;
@@ -46,14 +46,14 @@ int search(int* arr, int left, int len, int value) {
       i = sered + 1;
     }
   }
-  return 0;;
+  return 0;
 }
 
 int countPairs3(int *arr, int len, int value) {
   return 0;
   int count = 0;
   for (int i = 0; i < len; i++) {
-    count += search(arr, i, len, value - arr[i]);
+    count += cbinsearch(arr, i, len, value - arr[i]);
   }
   return count;
 }
