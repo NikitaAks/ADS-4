@@ -30,7 +30,7 @@ int cbinsearch(int* arr, int left, int len, int value) {
   int count = 0, i = left, j = len - 1, sered, a;
   while (i <= j) {
     sered = i + (j - i) / 2;
-    if (arr[mid] == value && sered != left && sered != len) {
+    if (arr[sered] == value && sered != left && sered != len) {
       count++;
       a = sered;
       while (arr[--sered] == value && sered > left) {
